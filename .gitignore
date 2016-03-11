@@ -1,0 +1,4 @@
+list
+log.txt
+*out/
+.ipynb_checkpoints/
