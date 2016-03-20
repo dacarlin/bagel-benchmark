@@ -25,7 +25,6 @@
 </APPLY_TO_POSE>
 <PROTOCOLS>
   <Add mover=cstadd />
-  <Add mover=mutate />
   <Add mover=monte_repack />
 </PROTOCOLS>
 </ROSETTASCRIPTS>
