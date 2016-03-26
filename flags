@@ -1,7 +1,7 @@
 # options 
-#-s bglb.pdb
+-s bglb.pdb
 -out:path:all out 
--parser::protocol repack.xml 
+-parser::protocol protocol 
 -extra_res_fa pNPG.params
 -enzdes::cstfile pNPG.enzdes.cst 
 
@@ -17,7 +17,7 @@
 -packing::optH_MCA false
 
 # enzdes-specific 
--score::weights talaris2013_cst
+#-score::weights talaris2013_cst
 -jd2::enzdes_out
 
 # memory

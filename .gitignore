@@ -1,4 +1,4 @@
 list
-log.txt
-*out/
+logs/*
+out/*
 .ipynb_checkpoints/
