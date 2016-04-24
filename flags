@@ -17,7 +17,7 @@
 -packing::optH_MCA false
 
 # enzdes-specific 
-#-score::weights talaris2013_cst
+-score::weights talaris2014_cst
 -jd2::enzdes_out
 
 # memory
