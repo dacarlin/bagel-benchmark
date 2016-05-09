@@ -1,6 +1,12 @@
 # Predicting effects of mutations on enzyme function, stability, and structure using a combination of molecular modeling and machine learning 
 
-## Contents 
+## Molecular modeling using Rosetta 
+
+### Benchmark modeling set 
+
++ Original benchmark: single point mutants created using `MutateResidue` mover and `EnzRepackMinimize` mover, scored using `enzdes_out`.
+
+## Machine learning using scikit-learn 
 
 ### Prediction of kinetic constants from `enzyme_design` feature set
 
