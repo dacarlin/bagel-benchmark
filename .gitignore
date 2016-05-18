@@ -1,5 +1,6 @@
 list
 logs/*
-results/*pdb
-#results/*sc
+out/*
+old_logs/*
+old_old/* 
 .ipynb_checkpoints/
