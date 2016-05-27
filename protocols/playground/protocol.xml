@@ -22,7 +22,7 @@
     <Add mover=cst_opt />
     <Add mover=repack_wbb />
   </ParsedProtocol>
-  <GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst />
+  <GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst trials=20 />
 </MOVERS>
 <APPLY_TO_POSE>
 </APPLY_TO_POSE>

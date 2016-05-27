@@ -1,7 +1,7 @@
 # options 
 -s bglb.pdb
 -out:path:all out 
--parser::protocol protocol 
+-parser::protocol protocol.xml 
 -extra_res_fa pNPG.params
 -enzdes::cstfile pNPG.enzdes.cst 
 

@@ -6,9 +6,9 @@
 #SBATCH -n 1
 #SBATCH -t 0-1:00
 #SBATCH --mem-per-cpu 2GB
-#SBATCH -p gc128 
-#SBATCH --array=1-2799
+##SBATCH -p gc128 
+#SBATCH --array=1-20000
 
-MUT=$( sed -n "$SLURM_ARRAY_TASK_ID p" err_list ) 
+MUT=$( sed -n "$SLURM_ARRAY_TASK_ID p" list ) 
 /share/work/rosetta/source/bin/rosetta_scripts.linuxgccrelease @flags $MUT 
 
