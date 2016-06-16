@@ -1,12 +1,12 @@
 <ROSETTASCRIPTS>
 <SCOREFXNS>
-  <myscore weights=talaris2014_cst.wts/>
+  <t weights=talaris2014_cst.wts/>
 </SCOREFXNS>
 <TASKOPERATIONS>
-  <DetectProteinLigandInterface name=repack_sphere design=0 cut1=8.0 cut2=10.0 cut3=12.0 cut4=14.0 catres_interface=1 />
+  3DetectProteinLigandInterface name=repack_sphere design=0 cut1=8.0 cut2=10.0 cut3=12.0 cut4=14.0 catres_interface=1 />
 </TASKOPERATIONS>
 <FILTERS>
-  <EnzScore name=allcst score_type=cstE scorefxn=myscore whole_pose=1 energy_cutoff=100 />
+  3EnzScore name=allcst score_type=cstE scorefxn=myscore whole_pose=1 energy_cutoff=100 />
 </FILTERS>
 <MOVERS>
   #MutateResidue name=mutate target=%%target%% new_res=%%new_res%% /> 
