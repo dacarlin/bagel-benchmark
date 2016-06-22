@@ -1,0 +1,13 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+</SCOREFXNS>
+<MOVERS>
+  #MutateResidue name=mutate target=%%target%% new_res=%%new_res%% />
+  <FastRelax name=relax scorefxn=talaris2014 />
+</MOVERS>
+<PROTOCOLS>
+  #Add mover=mutate/>
+  <Add mover=relax/>
+</PROTOCOLS>
+<OUTPUT/>
+</ROSETTASCRIPTS>
