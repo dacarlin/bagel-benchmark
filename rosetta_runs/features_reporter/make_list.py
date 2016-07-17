@@ -1,8 +1,9 @@
 from Bio.SeqUtils import IUPACData
-nstruct = 100
+nstruct = 100  
 
-with open( 'mutant_list' ) as fn:
-    mutants = [ i.strip() for i in fn.readlines() if len( i ) > 1 ] 
+with open( 'mutant_list.txt' ) as fn:
+    #mutants = [ i.strip() for i in fn.readlines() if len( i ) > 1 ] 
+    mutants = fn.read().split()
     print len( mutants ), 'mutants'
 
 nstruct = 100

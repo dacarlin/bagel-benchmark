@@ -1,12 +1,15 @@
 <ROSETTASCRIPTS>
 <SCOREFXNS>
 </SCOREFXNS>
+<TASKOPERATIONS>
+  <DesignAround name=around design_shell=8.0 resnums=%%target%%A repack_shell=8.0 allow_design=0 resnums_allow_design=0/>
+</TASKOPERATIONS>
 <MOVERS>
-  #MutateResidue name=mutate target=%%target%% new_res=%%new_res%% />
-  <FastRelax name=relax scorefxn=talaris2014 />
+  <MutateResidue name=mutate target=%%target%% new_res=%%new_res%% />
+  <FastRelax name=relax scorefxn=talaris2014 task_operations=around />
 </MOVERS>
 <PROTOCOLS>
-  #Add mover=mutate/>
+  <Add mover=mutate/>
   <Add mover=relax/>
 </PROTOCOLS>
 <OUTPUT/>

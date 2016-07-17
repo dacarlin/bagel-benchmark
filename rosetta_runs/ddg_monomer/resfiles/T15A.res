@@ -1,1 +1,0 @@
-15 A PIKAA A

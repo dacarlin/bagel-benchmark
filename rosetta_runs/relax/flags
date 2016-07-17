@@ -1,3 +1,5 @@
--s 2jie.cif 
--nstruct 1000
+-s 2JIE.pdb
+-parser:protocol protocol.xml
+-nstruct 1
 -ignore_unrecognized_res 
+-out:path:all out 
