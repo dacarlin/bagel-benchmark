@@ -1,1 +1,0 @@
-34 A PIKAA R
