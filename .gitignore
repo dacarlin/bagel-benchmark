@@ -1,7 +1,18 @@
+# rosetta_scripts io 
 list
-logs/*
-out/*
-old_logs/*
-old_old/* 
+*logs/*err
+*logs/*out
+*out/*pdb
+*out/*sc
+
+# ipynb 
 .ipynb_checkpoints/
+
+# binaries 
 foldx
+
+# ddg_monomer io  
+wt_traj
+wt_*.out
+mut_*.out
+mutant_traj*
