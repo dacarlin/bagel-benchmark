@@ -1,0 +1,2 @@
+Module rosetta-main-source loaded. 
+/var/lib/slurm-llnl/slurmd/job2024797/slurm_script: line 12: 30305 Illegal instruction     rosetta_scripts.linuxgccrelease @flags $MUT

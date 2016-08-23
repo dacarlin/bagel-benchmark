@@ -1,0 +1,20 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+  <md_score weights=talaris2014_cart /> 
+</SCOREFXNS>
+<TASKOPERATIONS>
+</TASKOPERATIONS>
+<FILTERS>
+</FILTERS>
+<MOVERS>
+  <MutateResidue name=mutate target=%%target%% new_res=%%new_res%% /> 
+  CartesianMD name=md scorefxn=md_score />
+  <CartesianMD name=md scorefxn=md_score temp=175 premin=0 postmin=0 />
+</MOVERS>
+<APPLY_TO_POSE>
+</APPLY_TO_POSE>
+<PROTOCOLS>
+  <Add mover=mutate />
+  <Add mover=md />
+</PROTOCOLS>
+</ROSETTASCRIPTS>
