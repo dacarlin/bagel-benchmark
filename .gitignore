@@ -1,3 +1,4 @@
+*.tar
 # rosetta_scripts io 
 list
 *logs/*err
