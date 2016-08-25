@@ -14,6 +14,7 @@ with open( 'list', 'w' ) as fn:
     fn.write( ''.join( runs ) )
 
 
-print len( mutants ), 'mutants'
-print 'nstruct', nstruct 
-print 'writing to \'list\'' 
+print len( mutants ), 'mutants, submit with:' 
+#print 'nstruct', nstruct
+#print 'writing to \'list\'' 
+print 'sbatch --array=1-{} sub.sh'.format( len( mutants ) * nstruct ) 
