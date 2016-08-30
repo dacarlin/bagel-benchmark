@@ -1,20 +1,14 @@
 from Bio.SeqUtils import IUPACData
-nstruct = 100  
+fmt = IUPACData.protein_letters_1to3 
 
 with open( 'mutant_list' ) as fn:
-    mutants = list( set ( [ i.strip() for i in fn.readlines() if len( i ) > 1 ] ) ) 
-
-runs = [
-    '-parser:script_vars target={} new_res={} -suffix _{}_{:04d}\n'.format( 
-    m[1:-1], IUPACData.protein_letters_1to3[ m[-1] ].upper(), m, i ) 
-    for i in range( nstruct ) for m in mutants 
-]
+    mutants = fn.read().split()
 
 with open( 'list', 'w' ) as fn:
-    fn.write( ''.join( runs ) )
-
+    for m in mutants:
+        my_flags = '-parser:script_vars target={} new_res={} -suffix _{}\n'
+        my_str = my_flags.format( m[1:-1], fmt[ m[ -1 ] ].upper(), m )  
+        fn.write( my_str ) 
 
 print len( mutants ), 'mutants, submit with:' 
-#print 'nstruct', nstruct
-#print 'writing to \'list\'' 
-print 'sbatch --array=1-{} sub.sh'.format( len( mutants ) * nstruct ) 
+print 'sbatch --array=1-{} sub.sh'.format( len( mutants ) ) 
