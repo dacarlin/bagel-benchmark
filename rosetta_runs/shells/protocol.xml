@@ -5,9 +5,9 @@
 <TASKOPERATIONS>
   <DetectProteinLigandInterface name=repack_sphere design=0 catres_interface=1 />
 </TASKOPERATIONS>
-#FILTERS>
-  #EnzScore name=allcst score_type=cstE scorefxn=myscore whole_pose=1 energy_cutoff=100000000 />
-#/FILTERS>
+<FILTERS>
+  <EnzScore name=allcst score_type=cstE scorefxn=myscore whole_pose=1 energy_cutoff=100000000 />
+</FILTERS>
 <MOVERS>
   <MutateResidue name=mutate target=%%target%% new_res=%%new_res%% /> 
   <AddOrRemoveMatchCsts name=cstadd cst_instruction=add_new />
@@ -19,11 +19,10 @@
     task_operations=repack_sphere />
   <ParsedProtocol name=iterate>
     <Add mover=predock />
-    #Add mover=cst_opt />
+    <Add mover=cst_opt />
     <Add mover=repack_wbb />
   </ParsedProtocol>
-  #GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst />
-  <GenericMonteCarlo name=monte_repack  mover_name=iterate scorefxn_name=myscore />
+  <GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst />
 </MOVERS>
 <APPLY_TO_POSE>
 </APPLY_TO_POSE>
