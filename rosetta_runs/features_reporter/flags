@@ -1,9 +1,6 @@
 # options 
--s bglb.pdb
--out:path:all out 
--parser::protocol protocol.xml 
+-parser::protocol score_only_protocol.xml 
 -extra_res_fa pNPG.params
--enzdes::cstfile pNPG.enzdes.cst 
 
 # packing
 -packing::ex1
@@ -18,7 +15,6 @@
 
 # enzdes-specific 
 -score::weights talaris2014_cst
--jd2::enzdes_out
 
 # memory
 -run::preserve_header
