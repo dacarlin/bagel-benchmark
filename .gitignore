@@ -17,3 +17,6 @@ wt_traj
 wt_*.out
 mut_*.out
 mutant_traj*
+
+# feature sets, often large 
+feature_set.csv
