@@ -5,6 +5,7 @@ list
 *out/*pdb
 *out/*sc
 *0001.pdb
+*sc
 
 # ipynb 
 .ipynb_checkpoints/

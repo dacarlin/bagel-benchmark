@@ -1,5 +1,7 @@
 # options 
+-l list 
 -parser::protocol score_only_protocol.xml 
+-nooutput 
 -extra_res_fa pNPG.params
 
 # packing

@@ -1,5 +1,6 @@
 # options 
 -s bglb.pdb
+-nstruct 100 
 -out:path:all out 
 -parser::protocol protocol.xml 
 -extra_res_fa pNPG.params

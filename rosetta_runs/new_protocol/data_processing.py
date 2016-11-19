@@ -7,5 +7,6 @@ sf = pandas.concat( sfs )
 
 # we'll tidy up and then export to CSV 
 sf.description = sf.description.str.split( '_' ).str[ 1 ] 
-sf.set_index( 'description', drop=True, inplace=True )
+#sf.set_index( 'description', drop=True, inplace=True )
+sf = sf.groupby( 'description' ).apply( lambda x: x.sort_values( 'total_score' ).head( 10 ).mean() ) 
 sf.to_csv( 'feature_set.csv' ) 

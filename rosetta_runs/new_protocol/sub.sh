@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-#SBATCH -t 0-15:00
+#SBATCH -t 0-5:00
 #SBATCH --output=logs/slurm-%A_%a.out
 #SBATCH --error=logs/slurm-%A_%a.err
 #SBATCH --job-name=bgl

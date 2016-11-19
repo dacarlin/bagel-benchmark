@@ -4,7 +4,8 @@
 #SBATCH --output=logs/slurm-%A_%a.out
 #SBATCH --error=logs/slurm-%A_%a.err
 #SBATCH --job-name=bglb 
-#SBATCH --array=1-206 
+##SBATCH --array=1-206 
+#SBATCH --array=1 
 #SBATCH -p gc128 
 
 hostname -f 

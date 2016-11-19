@@ -1,14 +1,13 @@
 #!/bin/bash
 # 
-#SBATCH --output=logs/slurm-%A_%a.out
-#SBATCH --error=logs/slurm-%A_%a.err
-#SBATCH --job-name=bglb_feat
-#SBATCH -n 1
-#SBATCH -t 0-1:00
-#SBATCH --mem-per-cpu 2GB
-##SBATCH --array=1-100 
-#SBATCH --array=99
+#SBATCH -t 0-10:00
+#SBATCH --output=logs/slurm.out
+#SBATCH --error=logs/slurm.err
+#SBATCH --job-name=features 
+#SBATCH --array=1 
+#SBATCH -p gc128 
+#SBATCH --mem-per-cpu=10G 
 
-MUT=$( sed -n "$SLURM_ARRAY_TASK_ID p" list ) 
-/share/work/rosetta/source/bin/rosetta_scripts.linuxgccrelease @flags -s $MUT 
+module load rosetta 
+rosetta_scripts.linuxgccrelease @flags 
 

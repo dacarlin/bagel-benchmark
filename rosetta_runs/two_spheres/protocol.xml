@@ -21,11 +21,10 @@
     task_operations=repack_around />
   <ParsedProtocol name=iterate>
     <Add mover=predock />
-    #Add mover=cst_opt />
+    <Add mover=cst_opt />
     <Add mover=repack_mut /> 
     <Add mover=repack_wbb /> 
   </ParsedProtocol>
-  #GenericMonteCarlo name=monte_repack mover_name=iterate filter_name=allcst />
   <GenericMonteCarlo name=monte_repack mover_name=iterate scorefxn_name=myscore />
 </MOVERS>
 <APPLY_TO_POSE>

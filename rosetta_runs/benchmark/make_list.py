@@ -1,5 +1,7 @@
-from Bio.SeqUtils import IUPACData
-fmt = IUPACData.protein_letters_1to3 
+fmt = dict( zip( 'ANDRCQEGHILKMPFSTWYV', [
+    'ALA','ASN','ASP','ARG','CYS','GLN','GLU',
+    'GLY','HIS','ILE','LEU','LYS','MET','PRO','PHE','SER',
+    'THR','TRP','TYR','VAL' ] ) ) 
 
 with open( 'mutant_list' ) as fn:
     mutants = fn.read().split()
