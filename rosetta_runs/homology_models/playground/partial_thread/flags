@@ -1,0 +1,5 @@
+-in:file:fasta target.fasta
+-in:file:alignment aln.grishan
+-in:file:template_pdb 1ox7A.pdb 2o3kA.pdb 1ysdA.pdb
+-ignore_unrecognized_res 1
+-out:path:all out

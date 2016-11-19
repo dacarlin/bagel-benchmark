@@ -21,3 +21,6 @@ mutant_traj*
 # feature sets, often large 
 feature_set.csv
 features.db3 
+
+#pickle data 
+combos.pkl

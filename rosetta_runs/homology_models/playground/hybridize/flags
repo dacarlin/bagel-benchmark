@@ -1,0 +1,4 @@
+-nstruct 100 
+-in:file:fasta ../partial_thread/target.fasta
+-parser:protocol protocol.xml
+-default_max_cycles 200

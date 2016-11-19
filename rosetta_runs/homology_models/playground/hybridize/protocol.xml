@@ -1,0 +1,26 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+    <stage1 weights=score3 symmetric=0>
+        <Reweight scoretype=atom_pair_constraint weight=0.5/>
+    </stage1>
+    <stage2 weights=score4_smooth_cart symmetric=0>
+        <Reweight scoretype=atom_pair_constraint weight=0.5/>
+    </stage2>
+    <fullatom weights=talaris2013_cart symmetric=0>
+        <Reweight scoretype=atom_pair_constraint weight=0.5/>
+    </fullatom>
+</SCOREFXNS>
+<MOVERS>
+    <Hybridize name=hybridize stage1_scorefxn=stage1 stage2_scorefxn=stage2 fa_scorefxn=fullatom batch=1 stage1_increase_cycles=1.0 stage2_increase_cycles=1.0>
+        <Template pdb="../partial_thread/1ox7A_renum.pdb" cst_file="AUTO" weight=1.000 />
+        <Template pdb="../partial_thread/1ysdA_renum.pdb" cst_file="AUTO" weight=1.000 />
+        <Template pdb="../partial_thread/2o3kA_renum.pdb" cst_file="AUTO" weight=1.000 />
+    </Hybridize>
+<FastRelax name="relax" scorefxn=talaris2013  />
+</MOVERS>
+<PROTOCOLS>
+    <Add mover=hybridize/>
+    <Add mover=relax/>
+</PROTOCOLS>
+<OUTPUT scorefxn=talaris2013 />
+</ROSETTASCRIPTS>
