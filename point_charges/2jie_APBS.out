@@ -1,0 +1,26 @@
+Sat Nov  5 21:43:16 2016
+
+elec
+    mg-auto
+    mol 1
+    dime 161 161 161
+    lpbe
+    pdie 2.000
+    sdie 78.540
+    srfm smol
+    srad 1.400
+    bcfl sdh
+    temp 298.150
+    calc
+        id 1
+        grid 0.672 0.560 0.670
+        glen 107.498 89.638 107.216
+        totEnergy 2.355196884121E+05 kJ/mol
+    end
+    calc
+        id 2
+        grid 0.520 0.455 0.519
+        glen 83.234 72.728 83.068
+        totEnergy 3.675629868794E+05 kJ/mol
+    end
+end

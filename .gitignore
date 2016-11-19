@@ -1,10 +1,10 @@
-*.tar
 # rosetta_scripts io 
 list
 *logs/*err
 *logs/*out
 *out/*pdb
 *out/*sc
+*0001.pdb
 
 # ipynb 
 .ipynb_checkpoints/
@@ -20,3 +20,4 @@ mutant_traj*
 
 # feature sets, often large 
 feature_set.csv
+features.db3 
