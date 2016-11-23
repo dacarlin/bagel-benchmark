@@ -1,0 +1,9 @@
+Storage space required:
+
+Regular benchmark run is ~400 GB, running all doubles will need ~16 petabytes of disk space, not including the features databases 
+
+Run time: 
+
+40 x 10^6 runs, each at 1 hour is 40 x 10^6 (40 million) compute hours 
+
+
