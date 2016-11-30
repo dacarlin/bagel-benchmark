@@ -1,21 +1,51 @@
 # Predicting effects of mutations on enzyme function, stability, and structure using a combination of molecular modeling and machine learning 
 
-## Molecular modeling using Rosetta 
+## Molecular modeling protocols
 
-### Benchmark modeling set 
+### Rosetta protocols 
 
-+ Original benchmark: single point mutants created using `MutateResidue` mover and `EnzRepackMinimize` mover, scored using `enzdes_out`.
+#### Benchmark modeling set 
 
-## Machine learning using scikit-learn 
++ Files: `rosetta_runs/benchmark`
 
-### Prediction of kinetic constants from `enzyme_design` feature set
++ This feature set contains 45 features from Rosetta's enzyme design protocols, using scorefunction Talaris 2014. One hundred structures for each single point mutant are created using the `MutateResidue` mover, repacked and minimized by `EnzRepackMinimize` mover (10 Monte Carlo trials to minimize total system energy), scored using `-jd2:enzdes_out`. Features from the lowest 10 structures for each mutant are averaged. 
 
-+ Original benchmark: implementation of algorithms used in [our PLOS paper](http://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0147596) in Python using scikit-learn (originally implemented by Xiaokang Wang in R)
++ Run time on Cabernet: about 6 days for all 9000 possible point mutants 
 
-+ Multi-classifier feature sorting pipeline: systematically sorts Rosetta feature metrics by feature, picks lowest 10% of that feature, and trains multiple classifiers, reports which is best. Currently for kinetic constants only. Currently implemented elastic net with coordinate descent, elastic net with stochastic gradient descent, and elastic net with bagging. 
+#### Shells (`shells`) 
 
-### Prediction of protein thermal stability and expression 
++ Files: `rosetta_runs/benchmark`
 
-+ Elastic nets for prediction of protein melting temperature from `ddg_monomer` and `enzyme_design` feature sets 
++ Same as benchmark protocol, except that here constraint energy is optimized by Monte Carlo and also there is a constraint optimization step where the protein is mutated to all alanine and constraint energy is minimized. 
 
-+ SVM classifiers for prediction of protein expression from `ddg_monomer` and `enzyme_design` feature sets 
++ Run time on Cabernet: about 6 days for all 9000 possible point mutants 
+
+#### Reduced sampling protocol (`new_protocol`) 
+
++ Files: `rosetta_runs/new_protocol`
+
++ This feature set contains 45 features from Rosetta's enzyme design protocols. Ten structures for each single point mutant are created using the `MutateResidue` mover, repacked and minimized by `EnzRepackMinimize` mover (10 Monte Carlo trials to minimize total system energy), scored using `-jd2:enzdes_out`.
+
++ Run time on Cabernet: about 8 hours for all 9000 possible point mutants 
+
+### FoldX protocols 
+
+### Position-specific scoring matrix (PSSM) feature set  
+
++ Files: `foldx_runs/pssm`
+
++ This feature set contains 13 features output by the position-specific scoring matrix (PSSM) function of FoldX
+
++ Run time on Cabernet: about 24 hours for all possible point mutants 
+
+## Machine learning 
+
+### Prediction of kinetic constants and thermal stability (regression) 
+
++ Original implementation of algorithms used in [our paper describing the combination of molecular modeling and machine learning to predict enzyme kinetic constants](http://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0147596) by Xiaokang Wang (Ilias Tagkopoulos, UC Davis)
+
++ Implementation in Python (using `scikit-learn`) of the elastic net algorithm used in the PLOS paper (elastic net with bagging) allows comparison of the various feature sets for prediction of enzyme properties (see `machine_learning/elastic_net_with_bagging`) 
+
+### Prediction of protein expression in *Escherichia coli* (classification) 
+
++ SVM classifiers for prediction of protein expression from above feature sets (see `machine_learning/protein_expression`) 
