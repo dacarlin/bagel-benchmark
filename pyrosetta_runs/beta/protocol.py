@@ -1,5 +1,6 @@
 import pyrosetta 
 import rosetta 
+from sys import argv
 
 fmt = dict( zip( 'ANDRCQEGHILKMPFSTWYV', [
     'ALA','ASN','ASP','ARG','CYS','GLN','GLU',
@@ -7,7 +8,7 @@ fmt = dict( zip( 'ANDRCQEGHILKMPFSTWYV', [
     'THR','TRP','TYR','VAL' ] ) ) 
 
 # input files  
-mutant_name = 'H178W' 
+mutant_name = argv[1] #'H178W' 
 
 with open( 'input_files/flags' ) as fn:
     flags = fn.read().replace( '\n', ' ' )
@@ -44,9 +45,9 @@ pt = tf.create_task_and_apply_taskoperations(p)
 repack = rosetta.protocols.enzdes.EnzRepackMinimize()
 repack.set_scorefxn_repack( scorefxn )
 repack.set_scorefxn_minimize( scorefxn )
-#repack.set_min_bb( True )
-#repack.set_min_lig( True )  
-#repack.set_min_rb( True ) 
+repack.set_min_bb( True )
+repack.set_min_lig( True )  
+repack.set_min_rb( True ) 
 repack.set_min_sc( True )
 repack.task_factory( tf ) # adds packer task 
 
@@ -57,6 +58,11 @@ parsed.set_maxtrials( 10 )
 parsed.set_scorefxn( scorefxn )
 parsed.apply( p ) 
 
-# output PDB 
+# output PDB, probably for local testing only 
 p.dump_pdb( 'output_files/{}.pdb'.format( mutant_name) ) 
 
+# output features 
+report = rosetta.protocols.features.ReportToDB()
+report.add_features_reporter( rosetta.protocols.features.JobDataFeatures() ) 
+#report.add_features_reporter( rosetta.protocols.features.StructureScoresFeatures( scorefxn ) ) 
+report.apply( p ) 
