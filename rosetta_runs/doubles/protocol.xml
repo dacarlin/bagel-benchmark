@@ -1,0 +1,40 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+  <s weights=talaris2014_cst />
+</SCOREFXNS>
+<TASKOPERATIONS>
+  <DesignAround name=lig resnums=446,%%t1%%,%%t2%%% allow_design=0 resnums_allow_design=0 />
+</TASKOPERATIONS>
+<FILTERS>
+  <EnzScore name=cst_filter score_type=cstE scorefxn=s whole_pose=1 energy_cutoff=10000 />
+</FILTERS>
+<MOVERS>
+  <AddOrRemoveMatchCsts name=cstadd cst_instruction=add_new /> 
+  <MutateResidue name=mutate1 target=%%t1%% new_res=%%n1%% /> 
+  <MutateResidue name=mutate2 target=%%t2%% new_res=%%n2%% /> 
+  <PredesignPerturbMover name=predock />
+  <EnzRepackMinimize name=repack_wbb repack_only=1 scorefxn_minimize=s scorefxn_repack=s 
+    minimize_rb=1 minimize_sc=1 minimize_bb=1 minimize_lig=1 task_operations=lig />
+  <ParsedProtocol name=iterate>
+    <Add mover=predock />
+    <Add mover=repack_wbb />
+  </ParsedProtocol>
+  <GenericMonteCarlo name=monte mover_name=iterate filter_name=cst_filter />
+  <ReportToDB name=feats database_name=features_%%t1%%_%%n1%%_%%t2%%_%%n2%%.db3>
+    <feature name=ScoreTypeFeatures/>
+    <feature name=StructureScoresFeatures scorefxn=s/>
+    <feature name=ResidueFeatures />
+    <feature name=InterfaceFeatures scorefxn=s pack_together=0 /> 
+    <feature name=ResidueScoresFeatures scorefxn=s /> 
+  </ReportToDB>
+</MOVERS>
+<APPLY_TO_POSE>
+</APPLY_TO_POSE>
+<PROTOCOLS>
+  <Add mover=cstadd />
+  <Add mover=mutate1 />
+  <Add mover=mutate2 />
+  <Add mover=monte />
+  <Add mover=feats /> 
+</PROTOCOLS>
+</ROSETTASCRIPTS>

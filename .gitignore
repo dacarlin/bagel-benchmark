@@ -7,6 +7,9 @@ list
 *0001.pdb
 *sc
 
+# PyRosetta io
+output_files
+
 # ipynb 
 .ipynb_checkpoints/
 
