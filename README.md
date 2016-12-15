@@ -2,6 +2,15 @@
 
 ## Molecular modeling protocols
 
+Each molecular modeling protocol is a self-contained directory containing all the required scripts to run the protocol. Currently, most protocols have
+
+1. a `make_list.py` preprocessing script that creates the input files for parallelization 
+1. a submit script `sub.sh` to submit the parallel runs to SLURM
+3. two directories, `logs` and `out`, where the output goes 
+4. a `data_processing.py` script to transform the output of the protocol into a feature set
+
+Each protocol has its own specialized version of each of these scripts, to account for all the different kinds of output the protocol produces. Details of each protocol are below. 
+
 ### Rosetta protocols 
 
 #### Benchmark modeling set 
