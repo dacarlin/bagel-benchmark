@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
 import pyrosetta 
 import rosetta 
 from sys import argv
@@ -10,22 +5,15 @@ import os
 #os.environ[ "SLURM_ARRAY_TASK_ID" ] = "96" # for testing! 
 
 
-# In[2]:
-
 with open( '../../mutant_list.txt' ) as fn:
     mutant_list = fn.read().split()
     mutant_name = mutant_list[ int( os.environ[ 'SLURM_ARRAY_TASK_ID' ] ) - 1 ] 
-
-
-# In[3]:
 
 fmt = dict( zip( 'ANDRCQEGHILKMPFSTWYV', [
     'ALA','ASN','ASP','ARG','CYS','GLN','GLU',
     'GLY','HIS','ILE','LEU','LYS','MET','PRO','PHE','SER',
     'THR','TRP','TYR','VAL' ] ) ) 
 
-
-# In[4]:
 
 # flags from command line 
 with open( 'input_files/flags' ) as fn:
@@ -54,9 +42,6 @@ target = int( mutant_name[ 1:-1 ] )
 new_res = fmt[ mutant_name[ -1 ] ] 
 mut = rosetta.protocols.simple_moves.MutateResidue( target, new_res )
 mut.apply( p ) 
-
-
-# In[8]:
 
 # set up pack task 
 tf = rosetta.core.pack.task.TaskFactory()
@@ -87,6 +72,6 @@ parsed.set_maxtrials( 10 )
 parsed.set_scorefxn( scorefxn )
 parsed.apply( p ) 
 
-jd = pyrosetta.PyJobDistributor( p, scorefxn, nstruct=1 ) 
-jd.output_scored_pdb( 'output_files/{}.scored.pdb'.format( mutant_name)  ) 
+# output PDB and features 
+p.dump_scored_pdb( 'output_files/{}.scored.pdb'.format( mutant_name), scorefxn ) 
 
