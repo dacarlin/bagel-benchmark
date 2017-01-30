@@ -2,7 +2,7 @@ import pyrosetta
 import rosetta 
 from sys import argv
 import os 
-#os.environ[ "SLURM_ARRAY_TASK_ID" ] = "96" # for testing! 
+os.environ[ "SLURM_ARRAY_TASK_ID" ] = "96" # for testing! 
 
 
 with open( '../../mutant_list.txt' ) as fn:
@@ -68,10 +68,11 @@ repack.task_factory( tf ) # adds packer task
 # monte carlo 
 parsed = rosetta.protocols.simple_moves.GenericMonteCarloMover()
 parsed.set_mover( repack )
-parsed.set_maxtrials( 10 )
+parsed.set_maxtrials( 1 )
 parsed.set_scorefxn( scorefxn )
 parsed.apply( p ) 
 
 # output PDB and features 
-p.dump_scored_pdb( 'output_files/{}.scored.pdb'.format( mutant_name), scorefxn ) 
-
+#p.dump_scored_pdb( 'output_files/{}.scored.pdb'.format( mutant_name), scorefxn ) 
+#pyrosetta.output_scorefile( p, 'test', 'test_current', 'score.sc', scorefxn, 1, native_pose=native_pose )
+pyrosetta.output_scorefile( p, mutant_name, mutant_name, '{}.score.sc'.format( mutant_name ), scorefxn, 1 ) 
